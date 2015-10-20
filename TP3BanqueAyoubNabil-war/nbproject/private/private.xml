@@ -11,6 +11,11 @@
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/BENATHMANE/Documents/NetBeansProjects/TP3BanqueAyoubNabil/TP3BanqueAyoubNabil-war/web/listeCompte.xhtml</file>
+            <file>file:/C:/Users/BENATHMANE/Documents/NetBeansProjects/TP3BanqueAyoubNabil/TP3BanqueAyoubNabil-war/src/java/managedbeans/CompteBancaireMBean.java</file>
+            <file>file:/C:/Users/BENATHMANE/Documents/NetBeansProjects/TP3BanqueAyoubNabil/TP3BanqueAyoubNabil-war/web/detailsCompte.xhtml</file>
+            <file>file:/C:/Users/BENATHMANE/Documents/NetBeansProjects/TP3BanqueAyoubNabil/TP3BanqueAyoubNabil-war/src/java/managedbeans/OperationsBancairesMBean.java</file>
+        </group>
     </open-files>
 </project-private>

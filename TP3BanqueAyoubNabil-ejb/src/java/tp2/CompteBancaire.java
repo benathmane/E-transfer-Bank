@@ -6,13 +6,17 @@
 package tp2;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.EJBException;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -29,7 +33,9 @@ public class CompteBancaire implements Serializable {
     private int id;
     private String nom;
     private int solde;
-
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    private List<OperationBancaire> listeOprerations = new ArrayList();
+    
     public CompteBancaire(){
         
     }
@@ -40,6 +46,11 @@ public class CompteBancaire implements Serializable {
 
     public void setId(int id) {
         this.id = id;
+    }
+    
+    private void addOperations(String description, int montant){
+        OperationBancaire op = new OperationBancaire(description, montant);
+        listeOprerations.add(op);
     }
 
     /**
@@ -87,11 +98,14 @@ public class CompteBancaire implements Serializable {
     }
     public CompteBancaire(String nom, int solde) {  
         this.nom = nom;  
-        this.solde = solde;  
+        this.solde = solde; 
+        // operation = création
+        addOperations("Création du compte", solde);
       }  
 
       public void deposer(int montant) {  
-        solde += montant;  
+        solde += montant;   
+        addOperations("Crédit " + montant, montant);
       }  
 
       public void retirer(int montant) {  
@@ -99,8 +113,9 @@ public class CompteBancaire implements Serializable {
             throw new EJBException();
         } else {
             solde -= montant;
+            addOperations("Débit " +montant, montant);
         }
-    } 
+    }
       
     @Override
     public boolean equals(Object object) {
@@ -113,6 +128,14 @@ public class CompteBancaire implements Serializable {
             return false;
         }
         return true;
+    }
+
+    public List<OperationBancaire> getListeOprerations() {
+        return listeOprerations;
+    }
+
+    public void setListeOprerations(List<OperationBancaire> listeOprerations) {
+        this.listeOprerations = listeOprerations;
     }
 
 

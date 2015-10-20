@@ -13,39 +13,32 @@
         <ui:composition template="./templates/template_default.xhtml">
 
             <ui:define name="content">
-                <h2>Transfert d'argent</h2>
+                <h2>Débiter un compte</h2>
                 <h:form>
                     <h:panelGrid columns="3">
                         <h:outputLabel value="Compte à déditer : "></h:outputLabel>
-                        <p:selectOneMenu value="#{compteBancaireMBean.id1}">
-                            <c:forEach var="CompteBancaire" items="#{compteBancaireMBean.getComptesBancaires()}">
-                                <f:selectItem itemLabel="${CompteBancaire.id}" itemValue="${CompteBancaire.id}" />
-                            </c:forEach>
-                        </p:selectOneMenu><br/>
-                        <h:outputLabel value="Compte à créditer : "></h:outputLabel>
-                        <p:selectOneMenu value="#{compteBancaireMBean.id2}">
+                        <p:selectOneMenu value="#{compteBancaireMBean.idCompteADebiter}">
                             <c:forEach var="CompteBancaire" items="#{compteBancaireMBean.getComptesBancaires()}">
                                 <f:selectItem itemLabel="${CompteBancaire.id}" itemValue="${CompteBancaire.id}" />
                             </c:forEach>
                         </p:selectOneMenu><br/>
                         <h:outputLabel value="Montant : "></h:outputLabel>
-                        <h:inputText value="#{compteBancaireMBean.montant}"></h:inputText><br/>
+                        <h:inputText value="#{compteBancaireMBean.montantADebiter}"></h:inputText><br/>
                         <h:commandButton 
-                            value="Transférer"
-                            action="#{compteBancaireMBean.transferer()}">
+                            value="Débiter le compte"
+                            action="#{compteBancaireMBean.debiterUnCompte()}">
                         </h:commandButton>
-                        </h:panelGrid>
-                    <h3>Résultat de l'opération : #{compteBancaireMBean.message}</h3>
-                </h:form>
-                <br/><br/>
+                    </h:panelGrid>
+                </h:form>  
+                <br/><br/>              
                 <f:view>
                     <h:form>
                         <h1><h:outputText value="Liste des comptes"/></h1>
                         <p:dataTable value="#{compteBancaireMBean.comptesBancaires}" var="item"
-                                    emptyMessage="No Bank account found with given criteria"   
-                                    widgetVar="BankAccountTable"  
-                                    paginator="true"  
-                                    rows="10">
+                                     emptyMessage="No Bank account found with given criteria"   
+                                     widgetVar="BankAccountTable"  
+                                     paginator="true"  
+                                     rows="10">
                             <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Identifiant"/>

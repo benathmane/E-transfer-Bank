@@ -6,10 +6,14 @@
 package managedbeans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import org.primefaces.model.LazyDataModel;
+import org.primefaces.model.SortOrder;
 import session.GestionnaireDeCompteBancaire;
 import tp2.CompteBancaire;
 
@@ -23,15 +27,58 @@ public class CompteBancaireMBean implements Serializable {
 
     @EJB
     private GestionnaireDeCompteBancaire gc;
+    private List<CompteBancaire> listeDesComptes;
+    private int idCompteACrediter;
+    private int montantACrediter;
+    private int idCompteADebiter;
+    private int montantADebiter;
+    private int id1;
+    private int id2;
+    private int montant;
+    private String message;
+    private LazyDataModel LazyModelComptesBacaires;
 
     /**
      * Creates a new instance of CompteBancaireMBean
      */
-    public CompteBancaireMBean() {
+     public CompteBancaireMBean() {
+        // On creer une instance du LazyDataModel
+        LazyModelComptesBacaires = new LazyDataModel<CompteBancaire>() {
 
+                    @Override
+                    public List<CompteBancaire> load(int start, int nb, 
+                            String nomChamp, SortOrder so, 
+                            Map map) {
+                        // A ecrire
+                        System.out.println("### load : start ="+ start + " nb = "+ nb + "nom colonne = " + nomChamp);
+                        if(nomChamp != null) {
+                            if(nomChamp.equals("nom")) {
+                                // Il faut trier
+                                System.out.println("Tri: champ= " + 
+                                        nomChamp + " ordre: " +so.name());
+                                return gc.getComptesTriesParNom(start, nb, so.name());
+                            }
+                        } else {
+                            // Juste la pagination, pas de tri, de filtre
+                            return gc.getComptes(start, nb); 
+                        }
+                        return null;
+                    }
+
+                    @Override
+                    public int getRowCount() {
+                        return (int) gc.getNombreDeComptes();
+                    }
+                };
     }
 
-    private int idCompteACrediter;
+    public LazyDataModel getLazyModelComptesBacaires() {
+        return LazyModelComptesBacaires;
+    }
+
+    public void setLazyModelComptesBacaires(LazyDataModel LazyModelComptesBacaires) {
+        this.LazyModelComptesBacaires = LazyModelComptesBacaires;
+    }
 
     /**
      * Get the value of idCompteACrediter
@@ -56,25 +103,26 @@ public class CompteBancaireMBean implements Serializable {
         gc.creerComptesTest();
         refreshListeDesComptes();
     }
-    
-    private List<CompteBancaire> listeDesComptes;
-    
-    private void refreshListeDesComptes(){
+
+    private void refreshListeDesComptes() {
         listeDesComptes = gc.findAll();
     }
-    
+
     public List<CompteBancaire> getComptesBancaires() {
-        if (listeDesComptes == null){
+        if (listeDesComptes == null) {
             refreshListeDesComptes();
         }
         return listeDesComptes;
+    }
+
+    public LazyDataModel getlazyComptesBancaires() {
+        return LazyModelComptesBacaires;
     }
 
     public void crediterUnCompte() {
         gc.crediterCompte(idCompteACrediter, montantACrediter);
         refreshListeDesComptes();
     }
-    private int montantADebiter;
 
     /**
      * Get the value of montantADebiter
@@ -94,8 +142,6 @@ public class CompteBancaireMBean implements Serializable {
         this.montantADebiter = montantADebiter;
     }
 
-    private int montantACrediter;
-
     /**
      * Get the value of montantACrediter
      *
@@ -114,12 +160,10 @@ public class CompteBancaireMBean implements Serializable {
         this.montantACrediter = montantACrediter;
     }
 
-    
     public void debiterUnCompte() {
         gc.debiterCompte(idCompteADebiter, montantADebiter);
         refreshListeDesComptes();
     }
-    private int idCompteADebiter;
 
     /**
      * Get the value of idCompteADebiter
@@ -138,8 +182,6 @@ public class CompteBancaireMBean implements Serializable {
     public void setIdCompteADebiter(int idCompteADebiter) {
         this.idCompteADebiter = idCompteADebiter;
     }
-    
-    private int montant;
 
     /**
      * Get the value of montant
@@ -158,7 +200,7 @@ public class CompteBancaireMBean implements Serializable {
     public void setMontant(int montant) {
         this.montant = montant;
     }
-    
+
     public void transferer() {
         // MAUVAIS : DEUX TRANSACTIONS ICI !!!
         //gc.debiterUnCompte(id1, montantTransfert);
@@ -166,12 +208,11 @@ public class CompteBancaireMBean implements Serializable {
         try {
             gc.transferer(id1, id2, montant);
             refreshListeDesComptes();
-        } catch(Exception e) {
+        } catch (Exception e) {
             message = "Transfert impossible, pas assez d'argent";
             System.out.println("### PAS ASSEZ d'argent");
         }
     }
-    private int id1;
 
     /**
      * Get the value of id1
@@ -191,8 +232,6 @@ public class CompteBancaireMBean implements Serializable {
         this.id1 = id1;
     }
 
-    private int id2;
-
     /**
      * Get the value of id2
      *
@@ -210,8 +249,6 @@ public class CompteBancaireMBean implements Serializable {
     public void setId2(int id2) {
         this.id2 = id2;
     }
-
-    private String message;
 
     /**
      * Get the value of message
@@ -231,5 +268,9 @@ public class CompteBancaireMBean implements Serializable {
         this.message = message;
     }
 
+    public void supprimerCompte(CompteBancaire c) {
+        gc.supprimerCompte(c);
+        refreshListeDesComptes();
+    }
 
 }
