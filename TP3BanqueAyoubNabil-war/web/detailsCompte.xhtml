@@ -25,7 +25,7 @@
                         <p:dataTable value="#{operationsBancairesMBean.operationsBancaires}" var="item">
                             <p:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Dateoperation"/>
+                                    <h:outputText value="Date de l'operation"/>
                                 </f:facet>
                                 <h:outputText value="#{item.dateoperation}"/>
                             </p:column>
@@ -40,12 +40,6 @@
                                     <h:outputText value="Montant"/>
                                 </f:facet>
                                 <h:outputText value="#{item.montant}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Id"/>
-                                </f:facet>
-                                <h:outputText value="#{item.id}"/>
                             </p:column>
                         </p:dataTable>
                     </h:form>
