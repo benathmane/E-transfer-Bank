@@ -26,15 +26,16 @@ import javax.persistence.OneToMany;
     @NamedQuery(name = "CompteBancaire.findAll", query = "SELECT c FROM CompteBancaire c"),
 })
 @Entity
-public class CompteBancaire implements Serializable {
+abstract public class CompteBancaire implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String nom;
-    private int solde;
+    protected String description;
+    protected int solde;
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    private List<OperationBancaire> listeOprerations = new ArrayList();
+    protected List<OperationBancaire> listeOprerations = new ArrayList();
     
     public CompteBancaire(){
         
@@ -42,6 +43,14 @@ public class CompteBancaire implements Serializable {
     
     public int getId() {
         return id;
+    }
+    
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public void setId(int id) {

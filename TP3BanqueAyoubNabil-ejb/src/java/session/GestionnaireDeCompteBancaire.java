@@ -12,6 +12,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import tp2.CompteBancaire;
+import tp2.CompteCourant;
+import tp2.CompteEpargne;
 import tp2.OperationBancaire;
 
 /**
@@ -36,7 +38,7 @@ public class GestionnaireDeCompteBancaire {
     }
 
     public void creerComptesTest() {
-        creerCompte(new CompteBancaire("BENATHMANE Ayoub", 15094000));
+        /*creerCompte(new CompteBancaire("BENATHMANE Ayoub", 15094000));
         creerCompte(new CompteBancaire("AALALOU	Soufiane", 950000));
         creerCompte(new CompteBancaire("ALI KARI Zalbiya", 20000));
         creerCompte(new CompteBancaire("BEATINI Loric", 200000));
@@ -56,16 +58,22 @@ public class GestionnaireDeCompteBancaire {
         creerCompte(new CompteBancaire("PONCET Yoann", 963500));
         creerCompte(new CompteBancaire("ROTTIER	Gaël", 195630));
         creerCompte(new CompteBancaire("SAIDI Marouane", 185900));
-        creerCompte(new CompteBancaire("SIMO DJILO Zacharie", 100852));
-        /*for (int i=0; i < 200; i++){
+        creerCompte(new CompteBancaire("SIMO DJILO Zacharie", 100852));*/
+        for (int i=0; i < 200; i++){
             String nom = "Proprio" + i;
             int solde = (int) Math.round(Math.random() * 100000);
-            creerCompte(new CompteBancaire(nom, solde));
-        }*/
+            creerCompte(new CompteCourant(nom, solde));
+        }
+        for (int i=0; i < 200; i++){
+            String nom = "Proprio" + i;
+            int solde = (int) Math.round(Math.random() * 100000);
+            double taux = 1 + 5 * Math.random();
+            creerCompte(new CompteEpargne(nom, solde, taux));
+        }
     }
 
     private void creerCompte(String nom, int solde) {
-        CompteBancaire cb = new CompteBancaire(nom, solde);
+        CompteBancaire cb = new CompteCourant(nom, solde);
         em.persist(cb);
     }
 

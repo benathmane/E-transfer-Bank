@@ -4,7 +4,8 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -12,17 +13,32 @@
         <ui:composition template="./templates/template_default.xhtml">
 
             <ui:define name="content">
+                <h2>Débiter un compte</h2>
+                <h:form>
+                    <h:panelGrid columns="3">
+                        <h:outputLabel value="Compte à déditer : "></h:outputLabel>
+                        <p:selectOneMenu value="#{compteBancaireMBean.idCompteADebiter}">
+                            <c:forEach var="CompteBancaire" items="#{compteBancaireMBean.getComptesBancaires()}">
+                                <f:selectItem itemLabel="${CompteBancaire.id}" itemValue="${CompteBancaire.id}" />
+                            </c:forEach>
+                        </p:selectOneMenu><br/>
+                        <h:outputLabel value="Montant : "></h:outputLabel>
+                        <h:inputText value="#{compteBancaireMBean.montantADebiter}"></h:inputText><br/>
+                        <h:commandButton 
+                            value="Débiter le compte"
+                            action="#{compteBancaireMBean.debiterUnCompte()}">
+                        </h:commandButton>
+                    </h:panelGrid>
+                </h:form>  
+                <br/><br/>              
                 <f:view>
                     <h:form>
-                        <h2>Liste des comptes</h2>
-                        <p:dataTable value="#{compteBancaireMBean.lazyModelComptesBacaires}" var="item"
-                                     lazy="true"
+                        <h1><h:outputText value="Liste des comptes"/></h1>
+                        <p:dataTable value="#{compteBancaireMBean.comptesBancaires}" var="item"
                                      emptyMessage="No Bank account found with given criteria"   
                                      widgetVar="BankAccountTable"  
                                      paginator="true"  
-                                     rows="20"
-                                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                     rowsPerPageTemplate="5,10,15">
+                                     rows="10">
                             <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Identifiant"/>
@@ -30,36 +46,20 @@
                                 <h:outputText value="#{item.id}"/>
                             </p:column>
                             <p:column
-                                sortBy="#{item.nom}">
+                                sortBy="#{item.nom}"  
+                                filterBy="#{item.nom}" >
                                 <f:facet name="header">
                                     <h:outputText value="Nom"/>
                                 </f:facet>
                                 <h:outputText value="#{item.nom}"/>
                             </p:column>
                             <p:column
-                                sortBy="#{item.description}">
-                                <f:facet name="header">
-                                    <h:outputText value="Type"/>
-                                </f:facet>
-                                <h:outputText value="#{item.description}"/>
-                            </p:column>
-                            <p:column>
+                                sortBy="#{item.solde}"  
+                                filterBy="#{item.solde}" >
                                 <f:facet name="header">
                                     <h:outputText value="Solde"/>
                                 </f:facet>
                                 <h:outputText value="#{item.solde}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Détails des opérations"/>
-                                </f:facet>
-                                <h:link outcome="detailsCompte.xhtml?id=#{item.id}" value="Détails"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Supprimer"/>
-                                </f:facet>
-                                <h:commandLink action="#{compteBancaireMBean.supprimerCompte(item)}" value="Supprimer"/>
                             </p:column>
                         </p:dataTable>
                     </h:form>
