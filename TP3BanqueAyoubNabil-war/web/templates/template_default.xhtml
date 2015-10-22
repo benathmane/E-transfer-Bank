@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -17,7 +18,7 @@
         <div id="top" class="top">
             <ui:insert name="top">
                 <h:link outcome="index.xhtml" >
-                <h:graphicImage value="resources/images/LogoBnq.png"  width="200" height="150" />
+                    <h:graphicImage value="resources/images/LogoBnq.png"  width="200" height="150" />
                 </h:link>
             </ui:insert>
         </div>
@@ -31,6 +32,41 @@
                             <li><h:link outcome="transfert.xhtml" value="Transférer"/></li>
                             <li><h:link outcome="crediter.xhtml" value="Effectuer un dépot"/></li>
                             <li><h:link outcome="debiter.xhtml" value="Effectuer un retrait"/></li>
+                            <!--<h:form>
+                                <p:growl id="messages" showDetail="true"/>
+
+                                <p:slideMenu style="width:180px; height: 200px">
+                                    <p:submenu label="Accueil">
+                                    </p:submenu>
+                                    <p:submenu label="Gestion des comptes">
+                                        <p:menuitem value="Transférer" actionListener="#{menuView.delete}"  ajax="false" icon="ui-icon-close"/>
+                                        <p:menuitem value="Effectuer un dépot" actionListener="#{menuView.delete}"  ajax="false" icon="ui-icon-close"/>
+                                        <p:menuitem value="Effectuer un retrait" actionListener="#{menuView.delete}"  ajax="false" icon="ui-icon-close"/>
+                                    </p:submenu>
+                                    <p:separator />
+                                    <p:submenu label="Afficher les comptes">
+                                    </p:submenu>
+                                </p:slideMenu>
+
+                                <p:separator />
+
+                                <p:commandButton id="dynaButton" value="Show" type="button" icon="ui-icon-extlink"/>
+                                <p:slideMenu overlay="true" trigger="dynaButton" my="left top" at="left bottom" style="width:180px">
+                                    <p:submenu label="Ajax Menuitems">
+                                        <p:menuitem value="Save" actionListener="#{menuView.save}" update="messages" icon="ui-icon-disk"/>
+                                        <p:menuitem value="Update" actionListener="#{menuView.update}" update="messages" icon="ui-icon-arrowrefresh-1-w"/>
+                                    </p:submenu>
+                                    <p:submenu label="Non-Ajax Menuitem">
+                                        <p:menuitem value="Delete" actionListener="#{menuView.delete}"  ajax="false" icon="ui-icon-close"/>
+                                    </p:submenu>
+                                    <p:submenu label="Navigations" icon="ui-icon-extlink">
+                                        <p:submenu label="Prime Links">
+                                            <p:menuitem value="Prime" url="http://www.prime.com.tr" />
+                                            <p:menuitem value="PrimeFaces" url="http://www.primefaces.org" />
+                                        </p:submenu>
+                                    </p:submenu>
+                                </p:slideMenu>
+                            </h:form>-->
                         </ul>
                     </div>
                 </ui:insert>

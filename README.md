@@ -1,13 +1,13 @@
 Modalités de rendu de ce TP
 
 - OBLIGATOIRE POUR LE TP:
-- Utilisation de templates comme dans le TP2,<br/>
-- Système ergonomique pour le transfert/dépôt/retrait d'argent (ne pas entre à la main les ids)<br/>
-- Obligation d'utiliser quelques composants PrimeFaces non étudiés en TPs<br/>
-- Comptes courants sous classes des comptes bancaires et EJBTimer qui rapporte des sous toutes les 10s<br/>
-- Message Driven Bean pour les ordres de transfert bancaires<br/>
-- Lazy Loading pour l'affichage des tableaux<br/>
-- La prise en compte du cours sur la navigation avec faces-redirect=true, view params et utilisation intelligente des scopes est un plus<br/><br/>
+- <p style='color:green'>This is some red text.</p>Utilisation de templates comme dans le TP2,<br/></p>
+- <p style='color:green'>This is some red text.</p>Système ergonomique pour le transfert/dépôt/retrait d'argent (ne pas entre à la main les ids)<br/></p>
+- <p style='color:red'>Obligation d'utiliser quelques composants PrimeFaces non étudiés en TPs<br/></p>
+- <p style='color:red'>Comptes courants sous classes des comptes bancaires et EJBTimer qui rapporte des sous toutes les 10s<br/></p>
+- <p style='color:red'>Message Driven Bean pour les ordres de transfert bancaires<br/></p>
+- <p style='color:green'>Lazy Loading pour l'affichage des tableaux<br/></p>
+- <p style='color:red'>La prise en compte du cours sur la navigation avec faces-redirect=true, view params et utilisation intelligente des scopes est un plus<br/><br/></p>
 
 A faire en binome, ou seul,<br/>
 - Rendre un zip portant TP4_NTDP_2013-2014-binome1-binome2.zip<br/>

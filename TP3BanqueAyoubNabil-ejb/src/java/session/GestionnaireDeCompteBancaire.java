@@ -11,10 +11,10 @@ import javax.ejb.LocalBean;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import tp2.CompteBancaire;
-import tp2.CompteCourant;
-import tp2.CompteEpargne;
-import tp2.OperationBancaire;
+import entities.CompteBancaire;
+import entities.CompteCourant;
+import entities.CompteEpargne;
+import entities.OperationBancaire;
 
 /**
  *

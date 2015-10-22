@@ -15,7 +15,7 @@ import javax.faces.bean.ViewScoped;
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortOrder;
 import session.GestionnaireDeCompteBancaire;
-import tp2.CompteBancaire;
+import entities.CompteBancaire;
 
 /**
  *

@@ -11,8 +11,8 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import session.GestionnaireDeCompteBancaire;
-import tp2.CompteBancaire;
-import tp2.OperationBancaire;
+import entities.CompteBancaire;
+import entities.OperationBancaire;
 
 /**
  *
