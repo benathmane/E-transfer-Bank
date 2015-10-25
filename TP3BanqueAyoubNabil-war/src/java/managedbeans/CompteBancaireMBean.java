@@ -16,6 +16,9 @@ import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortOrder;
 import session.GestionnaireDeCompteBancaire;
 import entities.CompteBancaire;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import org.primefaces.event.CloseEvent;
 
 /**
  *
@@ -41,35 +44,35 @@ public class CompteBancaireMBean implements Serializable {
     /**
      * Creates a new instance of CompteBancaireMBean
      */
-     public CompteBancaireMBean() {
+    public CompteBancaireMBean() {
         // On creer une instance du LazyDataModel
         LazyModelComptesBacaires = new LazyDataModel<CompteBancaire>() {
 
-                    @Override
-                    public List<CompteBancaire> load(int start, int nb, 
-                            String nomChamp, SortOrder so, 
-                            Map map) {
-                        // A ecrire
-                        System.out.println("### load : start ="+ start + " nb = "+ nb + "nom colonne = " + nomChamp);
-                        if(nomChamp != null) {
-                            if(nomChamp.equals("nom")) {
-                                // Il faut trier
-                                System.out.println("Tri: champ= " + 
-                                        nomChamp + " ordre: " +so.name());
-                                return gc.getComptesTriesParNom(start, nb, so.name());
-                            }
-                        } else {
-                            // Juste la pagination, pas de tri, de filtre
-                            return gc.getComptes(start, nb); 
-                        }
-                        return null;
+            @Override
+            public List<CompteBancaire> load(int start, int nb,
+                    String nomChamp, SortOrder so,
+                    Map map) {
+                // A ecrire
+                System.out.println("### load : start =" + start + " nb = " + nb + "nom colonne = " + nomChamp);
+                if (nomChamp != null) {
+                    if (nomChamp.equals("nom")) {
+                        // Il faut trier
+                        System.out.println("Tri: champ= "
+                                + nomChamp + " ordre: " + so.name());
+                        return gc.getComptesTriesParNom(start, nb, so.name());
                     }
+                } else {
+                    // Juste la pagination, pas de tri, de filtre
+                    return gc.getComptes(start, nb);
+                }
+                return null;
+            }
 
-                    @Override
-                    public int getRowCount() {
-                        return (int) gc.getNombreDeComptes();
-                    }
-                };
+            @Override
+            public int getRowCount() {
+                return (int) gc.getNombreDeComptes();
+            }
+        };
     }
 
     public LazyDataModel getLazyModelComptesBacaires() {
@@ -121,6 +124,7 @@ public class CompteBancaireMBean implements Serializable {
 
     public void crediterUnCompte() {
         gc.crediterCompte(idCompteACrediter, montantACrediter);
+        addMessage("Information.", "Opération reussite.");
         refreshListeDesComptes();
     }
 
@@ -162,6 +166,7 @@ public class CompteBancaireMBean implements Serializable {
 
     public void debiterUnCompte() {
         gc.debiterCompte(idCompteADebiter, montantADebiter);
+        addMessage("Information.", "Opération reussite.");
         refreshListeDesComptes();
     }
 
@@ -207,6 +212,7 @@ public class CompteBancaireMBean implements Serializable {
         //gc.crediterUnCompte(id2, montantTransfert);
         try {
             gc.transferer(id1, id2, montant);
+            addMessage("Information.", "Opération reussite.");
             refreshListeDesComptes();
         } catch (Exception e) {
             message = "Transfert impossible, pas assez d'argent";
@@ -271,6 +277,11 @@ public class CompteBancaireMBean implements Serializable {
     public void supprimerCompte(CompteBancaire c) {
         gc.supprimerCompte(c);
         refreshListeDesComptes();
+    }
+
+    public void addMessage(String summary, String detail) {
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
 }

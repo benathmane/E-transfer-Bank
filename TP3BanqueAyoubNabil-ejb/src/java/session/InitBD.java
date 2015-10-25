@@ -22,6 +22,8 @@ import javax.ejb.Startup;
 public class InitBD {
     @EJB
     private GestionnaireDeCompteBancaire gc;
+    @EJB
+    private GestionnaireDeUtilisateurs gu;
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
@@ -29,5 +31,6 @@ public class InitBD {
     public void initBase() {
         System.out.println("#### BD REMPLIE ###");
         gc.creerComptesTest();
+        gu.creerUtilisateurTest();
     }
 }

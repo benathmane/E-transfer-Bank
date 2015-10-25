@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Profil</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./templates/template_default.xhtml">
+            <ui:define name="content">
+                <h:form  id="FormProfil" rendered="#{loginMBean.connected}">
+                    <center>
+                        <table border="0">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody >
+                                <tr>
+                                    <td style="padding-top: 10px; padding-bottom: 75px"></td>
+                                    <td><h:outputText  value="#{loginMBean.message}" style="font: bold" /></td>
+                                </tr>
+                                <tr>
+                                    <td><h:outputText value="Votre Login : " style="font: bold" /></td>
+                                    <td><h:outputText  value="#{loginMBean.user.login}" /></td>
+                                </tr>
+                                <tr>
+                                    <td><h:outputText value="Nom : " style="font: bold" /></td>
+                                    <td><h:outputText  value="#{loginMBean.user.nom}" /></td>
+                                </tr>
+                                <tr>
+                                    <td><h:outputText value="Prénom : " style="font: bold" /></td>
+                                    <td><h:outputText  value="#{loginMBean.user.prenom}" /></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <h:commandButton value="Deconnexion" action="#{loginMBean.deconnexion}" /> 
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </center>
+                </h:form>
+                
+                
+                <h:form  id="FormProfilKo" rendered="#{!loginMBean.connected}">
+                    Merci de 
+                    <h:commandButton 
+                            value="Se connecter"
+                            action="Login.xhtml">
+                        </h:commandButton>
+                </h:form>
+
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
