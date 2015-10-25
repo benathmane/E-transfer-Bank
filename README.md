@@ -1,20 +1,30 @@
-Modalités de rendu de ce TP
+<B>TP4 à rendre Le 2/11 à 8h pour le MBDS 2015-2016</B>
 
-- OBLIGATOIRE POUR LE TP:
-- Utilisation de templates comme dans le TP2 : **DONE**<br/>
-- Système ergonomique pour le transfert/dépôt/retrait d'argent (ne pas entre à la main les ids) : **DONE**<br/>
-- Obligation d'utiliser quelques composants PrimeFaces non étudiés en TPs : **ENOD**<br/>
-- Comptes courants sous classes des comptes bancaires et EJBTimer qui rapporte des sous toutes les 10s : **ENOD**<br/>
-- Message Driven Bean pour les ordres de transfert bancaires : **ENOD**<br/>
-- Lazy Loading pour l'affichage des tableaux : **DONE**<br/>
-- La prise en compte du cours sur la navigation avec faces-redirect=true, view params et utilisation intelligente des scopes est un plus : **ENOD**<br/><br/>
+Vous devez rendre le TP4 complet avec les ajouts suivants :
 
-A faire en binome, ou seul,<br/>
-- Rendre un zip portant TP4_NTDP_2013-2014-binome1-binome2.zip<br/>
-- Dans le zip : le répertoire du projet, une petite doc explicative avec points forts, points faibles, des screnshots. Tout ce que vous avez utilisé et qui n'a pas été expliqué en cours devra faire l'objet d'explications dans le readme.<br/>
-- Vous nous remettrez sur clé USB les TPs le jour de la démo (on passera dans les rangs).<br/>
-- Date de rendu séance de TP de la semaine du 3/12 pendant la séance de TP. Aucun retard toléré. Projet non rendu à l'heure = zéro à la note de TP.<br/>
-- Vous avez le droit de copier sur le voisin si vous êtes perdus, vous avez le droit de copier du code pris sur le net, A CONDITION DE BIEN INDIQUER LES SOURCES et d'avoir fait l'effort de comprendre ce que vous avez ré-utilisé.<br/>
+- Template avec joli Layout, logo, etc...
+ 
+- Beaucoup de comptes et beaucoup d'opérations (table des opérations aussi en Lazy Layout)
+ 
+- On ne peut accèder à rien tant qu'on est pas loggué. Gérer la connexion comme vu en cours (cf le projet JSFLoginPassword) avec un JSF bean en SessionScoped (penser à le mettre Serializable et avoir la librairie CDI dans le projet)
+ 
+- Lazy loading des comptes, essayer de faire marcher le tri et les filtres (par colonne, global)
+ 
+- Afficher les soldes négatifs en rouge (cf projet Goualmi)
+ 
+- Avoir des comptes Epargne et des comptes courants
+
+- Pour les dégourdis: trouver un système pour que les comptes épargne s'incrémentent toutes les XXX secondes en appliquant le taux d'épargne (EJB timers tester avec NetBeans..., PrimeFaces AjaxCore/Poll, etc.) 
+ 
+- Avoir un système ergonomique pour transférer de l'argent (par exemple: champ avec auto completion de PrimeFaces)
+ 
+- Utiliser les ViewParams quand on navigue d'une page à l'autre, utiliser SessionScoped uniquement pour l'authentification (login/password)
+ 
+- Système ergonomique pour supprimer des comptes (selection de lignes et menu contextuel click droit cf PrimeFaces datatable/selection ou joli bouton avec icone de poubelle). Utiliser un widget de dialogue PrimeFaces pur confirmation Oui/Non.
+ 
+- Joli menu sur la gauche, par exemple avec des panels Primefaces en accordéon
+ 
+- Obligation d'utiliser au moins 5 composants PrimeFaces non vus en cours.
 
 Réalisé par : 
 - BENATHMANE Ayoub<br/>
