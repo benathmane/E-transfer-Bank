@@ -2,29 +2,29 @@
 
 Vous devez rendre le TP4 complet avec les ajouts suivants :
 
-- Template avec joli Layout, logo, etc...
+- Template avec joli Layout, logo, etc... <B>DONE</B>
  
-- Beaucoup de comptes et beaucoup d'opérations (table des opérations aussi en Lazy Layout)
+- Beaucoup de comptes et beaucoup d'opérations (table des opérations aussi en Lazy Layout) <B>DONE</B>
  
-- On ne peut accèder à rien tant qu'on est pas loggué. Gérer la connexion comme vu en cours (cf le projet JSFLoginPassword) avec un JSF bean en SessionScoped (penser à le mettre Serializable et avoir la librairie CDI dans le projet)
+- On ne peut accèder à rien tant qu'on est pas loggué. Gérer la connexion comme vu en cours (cf le projet JSFLoginPassword) avec un JSF bean en SessionScoped (penser à le mettre Serializable et avoir la librairie CDI dans le projet) <B>DONE</B>
  
-- Lazy loading des comptes, essayer de faire marcher le tri et les filtres (par colonne, global)
+- Lazy loading des comptes, essayer de faire marcher le tri et les filtres (par colonne, global) <B>DONE</B>
  
-- Afficher les soldes négatifs en rouge (cf projet Goualmi)
+- Afficher les soldes négatifs en rouge (cf projet Goualmi) <B>DONE</B>
  
-- Avoir des comptes Epargne et des comptes courants
+- Avoir des comptes Epargne et des comptes courants <B>DONE</B>
 
 - Pour les dégourdis: trouver un système pour que les comptes épargne s'incrémentent toutes les XXX secondes en appliquant le taux d'épargne (EJB timers tester avec NetBeans..., PrimeFaces AjaxCore/Poll, etc.) 
  
-- Avoir un système ergonomique pour transférer de l'argent (par exemple: champ avec auto completion de PrimeFaces)
+- Avoir un système ergonomique pour transférer de l'argent (par exemple: champ avec auto completion de PrimeFaces) <B>DONE</B>
  
-- Utiliser les ViewParams quand on navigue d'une page à l'autre, utiliser SessionScoped uniquement pour l'authentification (login/password)
+- Utiliser les ViewParams quand on navigue d'une page à l'autre, utiliser SessionScoped uniquement pour l'authentification (login/password) <B>DONE</B>
  
-- Système ergonomique pour supprimer des comptes (selection de lignes et menu contextuel click droit cf PrimeFaces datatable/selection ou joli bouton avec icone de poubelle). Utiliser un widget de dialogue PrimeFaces pur confirmation Oui/Non.
+- Système ergonomique pour supprimer des comptes (selection de lignes et menu contextuel click droit cf PrimeFaces datatable/selection ou joli bouton avec icone de poubelle). Utiliser un widget de dialogue PrimeFaces pur confirmation Oui/Non. <B>DONE</B>
  
-- Joli menu sur la gauche, par exemple avec des panels Primefaces en accordéon
+- Joli menu sur la gauche, par exemple avec des panels Primefaces en accordéon <B>DONE</B>
  
-- Obligation d'utiliser au moins 5 composants PrimeFaces non vus en cours.
+- Obligation d'utiliser au moins 5 composants PrimeFaces non vus en cours. <B>DONE</B>
 
 Réalisé par : 
 - BENATHMANE Ayoub<br/>
