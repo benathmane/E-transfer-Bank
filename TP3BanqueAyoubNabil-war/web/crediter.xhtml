@@ -29,7 +29,9 @@
                         <br/>
                         <p:commandButton 
                             value="Créditer le compte"
-                            action="#{compteBancaireMBean.crediterUnCompte()}" update="msg">
+                            action="#{compteBancaireMBean.crediterUnCompte()}" 
+                            update="msg"
+                            icon="ui-icon-plus">
                             <p:confirm header="Confirmation" message="Vous etes sur ?" icon="ui-icon-alert" />
                         </p:commandButton>
                         <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
@@ -41,10 +43,11 @@
 
                 <h:form id="FormKoCrediter" rendered="#{!loginMBean.connected}"> 
                     Merci de 
-                    <h:commandButton 
+                    <p:commandButton 
                         value="Se connecter"
-                        action="Login.xhtml">
-                    </h:commandButton>
+                        action="Login.xhtml?faces-redirect=true"
+                        icon="ui-icon-locked">
+                    </p:commandButton>
                 </h:form>
             </ui:define>
 

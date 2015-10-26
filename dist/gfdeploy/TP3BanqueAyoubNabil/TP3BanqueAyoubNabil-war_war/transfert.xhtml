@@ -31,9 +31,12 @@
                         </p:selectOneMenu><br/>
                         <h:outputLabel value="Montant : "></h:outputLabel>
                         <p:spinner id="prefix" value="#{compteBancaireMBean.montant}" prefix="€" min="0" />
+                        <br/>
                         <p:commandButton 
                             value="Transférer"
-                            action="#{compteBancaireMBean.transferer()}" update="msg">
+                            action="#{compteBancaireMBean.transferer()}" 
+                            update="msg"
+                            icon="ui-icon-check">
                             <p:confirm header="Confirmation" message="Vous etes sur ?" icon="ui-icon-alert" />
                         </p:commandButton>
                         <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
@@ -43,12 +46,13 @@
                     </h:panelGrid>
                 </h:form>
 
-                <h:form id="FormKoTransferer" rendered="#{!loginMBean.connected}"> 
+                <h:form id="FormKoCrediter" rendered="#{!loginMBean.connected}"> 
                     Merci de 
-                    <h:commandButton 
+                    <p:commandButton 
                         value="Se connecter"
-                        action="Login.xhtml">
-                    </h:commandButton>
+                        action="Login.xhtml?faces-redirect=true"
+                        icon="ui-icon-locked">
+                    </p:commandButton>
                 </h:form>
             </ui:define>
 

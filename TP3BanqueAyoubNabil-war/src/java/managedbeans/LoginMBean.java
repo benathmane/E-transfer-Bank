@@ -89,7 +89,7 @@ public class LoginMBean implements Serializable {
         connected = false;
         message = "Veuillez vous identifier :";
         messageErrorLog = "";
-        return "/Login.xhtml";
+        return "/Login.xhtml?faces-redirect=true";
     }
 
     public String checkLogin() {

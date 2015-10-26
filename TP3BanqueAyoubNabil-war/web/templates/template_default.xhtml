@@ -24,7 +24,9 @@
                 </h:link>
                 <h:form id="loginUser" rendered="#{loginMBean.connected}" style="text-align: right">
                     <h:outputText value="Bonjour, #{loginMBean.user.nom} " />
-                    <h:commandButton value="Deconnexion" action="#{loginMBean.deconnexion}" /> 
+                    <p:commandButton value="Deconnexion" 
+                                     action="#{loginMBean.deconnexion}" 
+                                     icon="ui-icon-closethick"/> 
                 </h:form>
 
             </ui:insert>

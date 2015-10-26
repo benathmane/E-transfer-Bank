@@ -2,7 +2,7 @@
 
 Vous devez rendre le TP4 complet avec les ajouts suivants :
 
-- Template avec joli Layout, logo, etc... <B>DONE</B>
+- Template avec joli Layout, logo, etc... <B>DONE : à faire</B>
  
 - Beaucoup de comptes et beaucoup d'opérations (table des opérations aussi en Lazy Layout) <B>DONE</B>
  
