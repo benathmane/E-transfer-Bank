@@ -134,9 +134,13 @@ public class CompteBancaireMBean implements Serializable {
     }
 
     public void crediterUnCompte() {
-        gc.crediterCompte(idCompteACrediter, montantACrediter);
-        addMessage("Information.", "Opération reussite.");
-        refreshListeDesComptes();
+        if (montantACrediter == 0){
+            addMessage("Erreur.", "Le montant est égal à zéro.");
+        } else {
+            gc.crediterCompte(idCompteACrediter, montantACrediter);
+            addMessage("Information.", "Opération reussite.");
+            refreshListeDesComptes();
+        }
     }
 
     /**
@@ -176,9 +180,13 @@ public class CompteBancaireMBean implements Serializable {
     }
 
     public void debiterUnCompte() {
-        gc.debiterCompte(idCompteADebiter, montantADebiter);
-        addMessage("Information.", "Opération reussite.");
-        refreshListeDesComptes();
+        if (montantADebiter == 0){
+            addMessage("Erreur.", "Le montant est égal à zéro.");
+        } else {
+            gc.debiterCompte(idCompteADebiter, montantADebiter);
+            addMessage("Information.", "Opération reussite.");
+            refreshListeDesComptes();
+        }
     }
 
     /**
@@ -222,9 +230,15 @@ public class CompteBancaireMBean implements Serializable {
         //gc.debiterUnCompte(id1, montantTransfert);
         //gc.crediterUnCompte(id2, montantTransfert);
         try {
-            gc.transferer(id1, id2, montant);
-            addMessage("Information.", "Opération reussite.");
-            refreshListeDesComptes();
+            if (id1 == id2){
+                addMessage("Erreur.", "Compte à déditer = Compte à créditer.");
+            } else if (montant == 0){
+                addMessage("Erreur.", "Le montant est égal à zéro.");
+            } else {
+                gc.transferer(id1, id2, montant);
+                addMessage("Information.", "Opération reussite.");
+                refreshListeDesComptes();
+            }
         } catch (Exception e) {
             message = "Transfert impossible, pas assez d'argent";
             System.out.println("### PAS ASSEZ d'argent");

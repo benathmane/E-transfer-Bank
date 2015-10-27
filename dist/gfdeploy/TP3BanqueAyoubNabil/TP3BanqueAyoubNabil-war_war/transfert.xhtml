@@ -30,8 +30,10 @@
                             </c:forEach>
                         </p:selectOneMenu><br/>
                         <h:outputLabel value="Montant : "></h:outputLabel>
-                        <p:spinner id="prefix" value="#{compteBancaireMBean.montant}" prefix="€" min="0" />
-                        <br/>
+                        <p:spinner id="prefix" value="#{compteBancaireMBean.montant}" min="0" >
+                            <p:ajax update="ajaxSpinnerValue" process="@this" />
+                        </p:spinner>
+                        <h:outputText id="ajaxSpinnerValue" value="#{compteBancaireMBean.montant} €" style="padding-left: 10px" /><br/>
                         <p:commandButton 
                             value="Transférer"
                             action="#{compteBancaireMBean.transferer()}" 

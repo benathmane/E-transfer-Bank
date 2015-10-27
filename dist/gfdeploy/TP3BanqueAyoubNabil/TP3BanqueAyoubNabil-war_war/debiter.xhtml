@@ -25,8 +25,10 @@
                             </c:forEach>
                         </p:selectOneMenu><br/>
                         <h:outputLabel value="Montant : "></h:outputLabel>
-                        <p:spinner id="prefix" value="#{compteBancaireMBean.montantADebiter}" prefix="€" min="0" />
-                        <br/>
+                        <p:spinner id="prefix" value="#{compteBancaireMBean.montantADebiter}" min="0" >
+                            <p:ajax update="ajaxSpinnerValue" process="@this" />
+                        </p:spinner>
+                        <h:outputText id="ajaxSpinnerValue" value="#{compteBancaireMBean.montantADebiter} €" style="padding-left: 10px" /><br/>
                         <p:commandButton 
                             value="Débiter le compte"
                             action="#{compteBancaireMBean.debiterUnCompte()}"  

@@ -122,7 +122,7 @@ abstract public class CompteBancaire implements Serializable {
             throw new EJBException();
         } else {
             solde -= montant;
-            addOperations("Débit " +montant, montant);
+            addOperations("Débit " + montant, montant);
         }
     }
       
