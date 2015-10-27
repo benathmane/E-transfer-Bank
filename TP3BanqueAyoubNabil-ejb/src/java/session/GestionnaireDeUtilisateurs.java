@@ -26,7 +26,7 @@ public class GestionnaireDeUtilisateurs{
     private Utilisateur u;
     
     public void creerUtilisateurTest(){
-        creerUtilisateurs(new Utilisateur("admin", "admin", "nom1", "prenom1"));
+        creerUtilisateurs(new Utilisateur("admin", "admin", "BENATHMANE", "Ayoub"));
     }
     private void creerUtilisateurs(Utilisateur u) {
         em.persist(u);
