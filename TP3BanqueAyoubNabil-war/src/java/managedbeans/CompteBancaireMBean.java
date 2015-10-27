@@ -40,7 +40,18 @@ public class CompteBancaireMBean implements Serializable {
     private int montant;
     private String message;
     private LazyDataModel LazyModelComptesBacaires;
+    
+    private List<CompteBancaire> CheckDesComptes;
 
+    public List<CompteBancaire> getCheckDesComptes() {
+        return CheckDesComptes;
+    }
+
+    public void setCheckDesComptes(List<CompteBancaire> CheckDesComptes) {
+        this.CheckDesComptes = CheckDesComptes;
+    }
+
+    
     /**
      * Creates a new instance of CompteBancaireMBean
      */
@@ -276,12 +287,28 @@ public class CompteBancaireMBean implements Serializable {
 
     public void supprimerCompte(CompteBancaire c) {
         gc.supprimerCompte(c);
+        addMessage("Information.", "Suppression effectuée.");
         refreshListeDesComptes();
     }
 
     public void addMessage(String summary, String detail) {
         FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
         FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+    
+    public void supprimer() {
+        if (CheckDesComptes.isEmpty()){
+            addMessage("Erreur.", "Merci de sélectionner un/plusieurs comptes.");
+        }else{
+            for(CompteBancaire c:CheckDesComptes)
+            {
+                System.out.println("### Suppression du compte " + c.getId());
+                gc.supprimerCompte(c);
+            }
+            addMessage("Information.", "Suppression effectuée.");
+            refreshListeDesComptes();
+        }
+        
     }
 
 }

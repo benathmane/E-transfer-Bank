@@ -18,12 +18,27 @@
                         <h2>Liste des comptes</h2>
                         <p:dataTable value="#{compteBancaireMBean.lazyModelComptesBacaires}" var="item"
                                      lazy="true"
+                                     id="dataTableID"
                                      emptyMessage="No Bank account found with given criteria"   
                                      widgetVar="BankAccountTable"  
                                      paginator="true"  
-                                     rows="20"
+                                     rows="5"
                                      paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                     rowsPerPageTemplate="5,10,15">
+                                     rowsPerPageTemplate="5,10,15"
+                                     selection="#{compteBancaireMBean.checkDesComptes}" rowKey="#{item.id}">
+                            <f:facet name="header">
+                                <p:growl id="msg" showDetail="true" />
+                                <p:commandLink actionListener="#{compteBancaireMBean.supprimer()}" 
+                                               update="dataTableID msg">
+                                    <h:outputText value="Supprimer multiple" />
+                                    <p:confirm header="Confirmation" message="Êtes-vous sûr ?" icon="ui-icon-alert" />
+                                </p:commandLink>
+                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                    <p:commandButton value="Oui" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                    <p:commandButton value="Non" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                </p:confirmDialog>
+                            </f:facet>
+                            <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
                             <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Identifiant"/>
@@ -48,10 +63,14 @@
                                     <h:outputText value="Solde"/>
                                 </f:facet>
                                 <div style="background-color: green">
-                                    <h:outputText value="#{item.solde}" style="font-weight: Bold; color: white" rendered="#{item.solde gt 0}"/> 
+                                    <h:outputText value="#{item.solde}" 
+                                                  style="font-weight: Bold; color: white" 
+                                                  rendered="#{item.solde gt 0}"/> 
                                 </div>
                                 <div style="background-color: red">
-                                    <h:outputText value="#{item.solde}" style="font-weight: Bold; color: white" rendered="#{item.solde le 0}"/> 
+                                    <h:outputText value="#{item.solde}" 
+                                                  style="font-weight: Bold; color: white" 
+                                                  rendered="#{item.solde le 0}"/> 
                                 </div>
                             </p:column>
                             <p:column>
@@ -64,12 +83,20 @@
                                 <f:facet name="header">
                                     <h:outputText value="Supprimer"/>
                                 </f:facet>
-                                <h:commandLink action="#{compteBancaireMBean.supprimerCompte(item)}" value="Supprimer"/>
+                                <p:commandLink action="#{compteBancaireMBean.supprimerCompte(item)}" 
+                                               update="dataTableID msg">
+                                    <h:outputText value="Supprimer" />
+                                    <p:confirm header="Confirmation" message="Êtes-vous sûr ?" icon="ui-icon-alert" />
+                                </p:commandLink>
+                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                    <p:commandButton value="Oui" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                    <p:commandButton value="Non" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                </p:confirmDialog>
                             </p:column>
                         </p:dataTable>
                     </h:form>
-                    
-                    
+
+
                     <h:form  id="FormListeko" rendered="#{!loginMBean.connected}">
                         <h2>Liste des comptes</h2>
                         <p:dataTable value="#{compteBancaireMBean.lazyModelComptesBacaires}" var="item"
@@ -77,7 +104,7 @@
                                      emptyMessage="No Bank account found with given criteria"   
                                      widgetVar="BankAccountTable"  
                                      paginator="true"  
-                                     rows="20"
+                                     rows="5"
                                      paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                      rowsPerPageTemplate="5,10,15">
                             <p:column>
