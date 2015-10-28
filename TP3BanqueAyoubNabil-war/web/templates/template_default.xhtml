@@ -18,10 +18,9 @@
 
         <div id="top" class="top">
             <ui:insert name="top">
-
-                <h:link outcome="Profil.xhtml" >
+                <!--<h:link outcome="Profil.xhtml" >
                     <h:graphicImage value="resources/images/LogoBnq.png"  width="200" height="150" />
-                </h:link>
+                </h:link>-->
                 <h:form id="loginUser" rendered="#{loginMBean.connected}" style="text-align: right">
                     <h:outputText value="Bonjour, #{loginMBean.user.nom} " />
                     <p:commandButton value="Deconnexion" 
