@@ -2,7 +2,7 @@
 
 Vous devez rendre le TP4 complet avec les ajouts suivants :
 
-- Template avec joli Layout, logo, etc... <B>DONE : à faire</B>
+- Template avec joli Layout, logo, etc... <B>DONE : à compléter</B>
  
 - Beaucoup de comptes et beaucoup d'opérations (table des opérations aussi en Lazy Layout) <B>DONE</B>
  
@@ -14,7 +14,7 @@ Vous devez rendre le TP4 complet avec les ajouts suivants :
  
 - Avoir des comptes Epargne et des comptes courants <B>DONE</B>
 
-- Pour les dégourdis: trouver un système pour que les comptes épargne s'incrémentent toutes les XXX secondes en appliquant le taux d'épargne (EJB timers tester avec NetBeans..., PrimeFaces AjaxCore/Poll, etc.) 
+- Pour les dégourdis: trouver un système pour que les comptes épargne s'incrémentent toutes les XXX secondes en appliquant le taux d'épargne (EJB timers tester avec NetBeans..., PrimeFaces AjaxCore/Poll, etc.) <B>ENOD : à faire</B>
  
 - Avoir un système ergonomique pour transférer de l'argent (par exemple: champ avec auto completion de PrimeFaces) <B>DONE</B>
  
