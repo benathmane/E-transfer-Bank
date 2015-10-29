@@ -65,7 +65,9 @@
                                 <div style="background-color: green">
                                     <h:outputText value="#{item.solde}" 
                                                   style="font-weight: Bold; color: white" 
-                                                  rendered="#{item.solde gt 0}"/> 
+                                                  rendered="#{item.solde gt 0}">
+                                        <f:convertNumber currencySymbol="€" groupingUsed="#{true}" maxFractionDigits="2" type="currency"/>
+                                </h:outputText>
                                 </div>
                                 <div style="background-color: red">
                                     <h:outputText value="#{item.solde}" 
