@@ -30,7 +30,7 @@ Vous devez rendre le TP4 complet avec les ajouts suivants :
 - Interface joli <br/>
 - Lazy Loading dans détail <br/>
 - Filtre dans les tableaux <br/>
-- Pour créditer/débiter/transfert, mettre le nom aulieu de l'ID <br/>
+- Pour créditer/débiter/transfert, mettre le nom aulieu de l'ID <br/> <b>DONE</b>
 - Suppression : poubelle ou click droit/supprimer <br/>
 - ...
 
