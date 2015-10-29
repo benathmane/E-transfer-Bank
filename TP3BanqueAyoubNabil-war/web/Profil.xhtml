@@ -39,18 +39,19 @@
                 </h:form>
 
 
-                <h:form  id="FormProfilKo" rendered="#{!loginMBean.connected}">
+                <h:form  id="FormProfilKo" rendered="#{!loginMBean.connected}" style="text-align: right">
                     Merci de 
-                    <p:commandButton 
+                    <p:commandLink 
                         value="Se connecter"
-                        action="Login.xhtml?faces-redirect=true"
-                        icon="ui-icon-locked">
-                    </p:commandButton>
+                        action="Login.xhtml?faces-redirect=true">
+                   
+                    </p:commandLink>
                 </h:form>
 
 
             </ui:define>
         </ui:composition>
+        
     </h:body>
 </html>
 

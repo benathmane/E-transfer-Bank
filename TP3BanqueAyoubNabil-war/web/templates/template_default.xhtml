@@ -18,14 +18,16 @@
 
         <div id="top" class="top">
             <ui:insert name="top">
-                <!--<h:link outcome="Profil.xhtml" >
-                    <h:graphicImage value="resources/images/LogoBnq.png"  width="200" height="150" />
-                </h:link>-->
-                <h:form id="loginUser" rendered="#{loginMBean.connected}" style="text-align: right; ">
-                    <h:outputText value="Bonjour, #{loginMBean.user.nom} " />
-                    <p:commandButton value="Deconnexion" 
+                
+                <h:link outcome="Profil.xhtml" >
+                    <h:graphicImage value="resources/images/banqueLogo.jpg"  width="190px" height="140px" style="margin-left: 120px; margin-top: -5px"/>
+                </h:link>
+                <h:form id="loginUser" rendered="#{loginMBean.connected}" style="text-align: right">
+                    <h:outputText value="Bonjour, #{loginMBean.user.nom} " style="color: #000000" />
+                    <p:commandLink value="(Deconnexion)" 
                                      action="#{loginMBean.deconnexion}" 
-                                     icon="ui-icon-closethick"/> 
+                                     style="color: #000000"
+                                     /> 
                 </h:form>
 
             </ui:insert>
@@ -79,7 +81,11 @@
             <div id="content" class="left_content">
                 <ui:insert name="content"></ui:insert>
             </div>
+            <div id="menuBottom">Réalisé par: Ayoub/Nabil</div>
+        
         </div>
+        
     </h:body>
+    
 
 </html>

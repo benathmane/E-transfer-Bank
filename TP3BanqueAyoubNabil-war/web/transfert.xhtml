@@ -15,7 +15,9 @@
             <ui:define name="content">
                 <h:form id="FormTransfere" rendered="#{loginMBean.connected}">
                     <p:growl id="msg" showDetail="true" />
-                    <h2>Transfert d'argent</h2>
+                    <center>
+                        <h2>Transfert d'argent</h2>
+                    </center>
                     <h:panelGrid columns="3">
                         <h:outputLabel value="Compte à déditer : "></h:outputLabel>
                         <p:selectOneMenu value="#{compteBancaireMBean.id1}">
@@ -48,13 +50,13 @@
                     </h:panelGrid>
                 </h:form>
 
-                <h:form id="FormKoCrediter" rendered="#{!loginMBean.connected}"> 
+                <h:form id="FormKoCrediter" rendered="#{!loginMBean.connected}" style="text-align: right"> 
                     Merci de 
-                    <p:commandButton 
+                    <p:commandLink 
                         value="Se connecter"
-                        action="Login.xhtml?faces-redirect=true"
-                        icon="ui-icon-locked">
-                    </p:commandButton>
+                        action="Login.xhtml?faces-redirect=true">
+                   
+                    </p:commandLink>
                 </h:form>
             </ui:define>
 

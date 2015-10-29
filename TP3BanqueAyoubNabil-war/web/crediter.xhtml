@@ -14,7 +14,9 @@
             <ui:define name="content">
                 <h:form id="FormCrediter" rendered="#{loginMBean.connected}"> 
                     <p:growl id="msg" showDetail="true" />
-                    <h2>Créditer un compte</h2>
+                    <center>
+                        <h2>Créditer un compte</h2>
+                    </center>
                     <h:panelGrid columns="3">
                         <h:outputLabel value="Compte à créditer : "></h:outputLabel>
 
@@ -42,15 +44,16 @@
                             <p:commandButton value="Non" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
                         </p:confirmDialog>
                     </h:panelGrid>
+
                 </h:form>
 
-                <h:form id="FormKoCrediter" rendered="#{!loginMBean.connected}"> 
+                <h:form id="FormKoCrediter" rendered="#{!loginMBean.connected}" style="text-align: right"> 
                     Merci de 
-                    <p:commandButton 
+                    <p:commandLink 
                         value="Se connecter"
-                        action="Login.xhtml?faces-redirect=true"
-                        icon="ui-icon-locked">
-                    </p:commandButton>
+                        action="Login.xhtml?faces-redirect=true">
+                   
+                    </p:commandLink>
                 </h:form>
             </ui:define>
 
