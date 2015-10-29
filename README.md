@@ -26,6 +26,14 @@ Vous devez rendre le TP4 complet avec les ajouts suivants :
  
 - Obligation d'utiliser au moins 5 composants PrimeFaces non vus en cours. <B>DONE</B>
 
+-- Ce qui reste à faire :
+- Interface joli <br/>
+- Lazy Loading dans détail <br/>
+- Filtre dans les tableaux <br/>
+- Pour créditer/débiter/transfert, mettre le nom aulieu de l'ID <br/>
+- Suppression : poubelle ou click droit/supprimer <br/>
+- ...
+
 Réalisé par : 
 - BENATHMANE Ayoub<br/>
 - BOUGHZAF Nabil<br/>
