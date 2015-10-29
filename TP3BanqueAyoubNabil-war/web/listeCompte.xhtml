@@ -30,7 +30,7 @@
                                 <p:growl id="msg" showDetail="true" />
                                 <p:commandLink actionListener="#{compteBancaireMBean.supprimer()}" 
                                                update="dataTableID msg">
-                                    <h:outputText value="Supprimer multiple" />
+                                    <h:outputText value="Suppression multiple" />
                                     <p:confirm header="Confirmation" message="Êtes-vous sûr ?" icon="ui-icon-alert" />
                                 </p:commandLink>
                                 <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
@@ -85,7 +85,9 @@
                                 </f:facet>
                                 <p:commandLink action="#{compteBancaireMBean.supprimerCompte(item)}" 
                                                update="dataTableID msg">
-                                    <h:outputText value="Supprimer" />
+                                    <h:panelGroup styleClass="ui-icon ui-icon-trash" >
+                                        <!--<h:outputText value="Supprimer" />-->
+                                    </h:panelGroup>
                                     <p:confirm header="Confirmation" message="Êtes-vous sûr ?" icon="ui-icon-alert" />
                                 </p:commandLink>
                                 <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
