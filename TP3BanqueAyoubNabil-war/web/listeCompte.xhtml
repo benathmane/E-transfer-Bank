@@ -48,7 +48,8 @@
                                 <h:outputText value="#{item.id}"/>
                             </p:column>
                             <p:column
-                                sortBy="#{item.nom}">
+                                sortBy="#{item.nom}"
+                                filterBy="#{item.nom}">
                                 <f:facet name="header">
                                     <h:outputText value="Nom"/>
                                 </f:facet>
@@ -60,7 +61,9 @@
                                 </f:facet>
                                 <h:outputText value="#{item.description}"/>
                             </p:column>
-                            <p:column>
+                            <p:column
+                                sortBy="#{item.solde}"
+                                filterBy="#{item.solde}">
                                 <f:facet name="header">
                                     <h:outputText value="Solde"/>
                                 </f:facet>
@@ -74,7 +77,9 @@
                                 <div style="background-color: red">
                                     <h:outputText value="#{item.solde}" 
                                                   style="font-weight: Bold; color: white" 
-                                                  rendered="#{item.solde le 0}"/> 
+                                                  rendered="#{item.solde le 0}"> 
+                                        <f:convertNumber currencySymbol="€" groupingUsed="#{true}" maxFractionDigits="2" type="currency"/>
+                                    </h:outputText>
                                 </div>
                             </p:column>
                             <p:column>
@@ -132,15 +137,21 @@
                                 </f:facet>
                                 <h:outputText value="#{item.description}"/>
                             </p:column>
-                            <p:column>
+                            <p:column
+                                sortBy="#{item.solde}">
                                 <f:facet name="header">
                                     <h:outputText value="Solde"/>
                                 </f:facet>
                                 <div style="background-color: green">
-                                    <h:outputText value="#{item.solde}" style="font-weight: Bold; color: white" rendered="#{item.solde gt 0}"/> 
+                                    <h:outputText value="#{item.solde}" style="font-weight: Bold; color: white" rendered="#{item.solde gt 0}">
+                                        
+                                        <f:convertNumber currencySymbol="€" groupingUsed="#{true}" maxFractionDigits="2" type="currency"/>
+                                    </h:outputText>
                                 </div>
                                 <div style="background-color: red">
-                                    <h:outputText value="#{item.solde}" style="font-weight: Bold; color: white" rendered="#{item.solde le 0}"/> 
+                                    <h:outputText value="#{item.solde}" style="font-weight: Bold; color: white" rendered="#{item.solde le 0}">
+                                        <f:convertNumber currencySymbol="€" groupingUsed="#{true}" maxFractionDigits="2" type="currency"/>
+                                    </h:outputText>
                                 </div>
                             </p:column>
                         </p:dataTable>

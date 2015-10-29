@@ -71,6 +71,11 @@ public class CompteBancaireMBean implements Serializable {
                         System.out.println("Tri: champ= "
                                 + nomChamp + " ordre: " + so.name());
                         return gc.getComptesTriesParNom(start, nb, so.name());
+                    } else if (nomChamp.equals("solde")){
+                        // Il faut trier
+                        System.out.println("Tri: champ= "
+                                + nomChamp + " ordre: " + so.name());
+                        return gc.getComptesTriesParSolde(start, nb, so.name());
                     }
                 } else {
                     // Juste la pagination, pas de tri, de filtre
