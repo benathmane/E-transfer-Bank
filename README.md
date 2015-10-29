@@ -30,8 +30,8 @@ Ce qui reste à faire :
 - Interface joli <br/>
 - Lazy Loading dans détail <br/>
 - Filtre dans les tableaux <br/>
-- Pour créditer/débiter/transfert, mettre le nom aulieu de l'ID <b>DONE</b>
-- Suppression : poubelle ou click droit/supprimer <br/>
+- Pour créditer/débiter/transfert, mettre le nom aulieu de l'ID <b>DONE</b><br/>
+- Suppression : poubelle ou click droit/supprimer <b>DONE</b><br/>
 - ...
 
 Réalisé par : 
