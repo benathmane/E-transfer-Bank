@@ -11,22 +11,24 @@ import java.util.List;
 import javax.ejb.EJBException;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
  * @author BENATHMANE
  */
 @NamedQueries({
-    @NamedQuery(name = "CompteBancaire.findAll", query = "SELECT c FROM CompteBancaire c"),
-})
+    @NamedQuery(name = "CompteBancaire.findAll", query = "SELECT c FROM CompteBancaire c"),})
 @Entity
 abstract public class CompteBancaire implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -36,15 +38,15 @@ abstract public class CompteBancaire implements Serializable {
     protected int solde;
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     protected List<OperationBancaire> listeOprerations = new ArrayList();
-    
-    public CompteBancaire(){
-        
+
+    public CompteBancaire() {
+
     }
-    
+
     public int getId() {
         return id;
     }
-    
+
     public String getDescription() {
         return description;
     }
@@ -56,8 +58,8 @@ abstract public class CompteBancaire implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
-    
-    private void addOperations(String description, int montant){
+
+    private void addOperations(String description, int montant) {
         OperationBancaire op = new OperationBancaire(description, montant);
         listeOprerations.add(op);
     }
@@ -80,7 +82,6 @@ abstract public class CompteBancaire implements Serializable {
         this.nom = nom;
     }
 
-    
     /**
      * Get the value of solde
      *
@@ -105,19 +106,27 @@ abstract public class CompteBancaire implements Serializable {
         hash += (int) id;
         return hash;
     }
-    public CompteBancaire(String nom, int solde) {  
-        this.nom = nom;  
-        this.solde = solde; 
+
+    public CompteBancaire(String nom, int solde) {
+        this.nom = nom;
+        this.solde = solde;
         // operation = création
         addOperations("Création du compte", solde);
-      }  
+    }
 
-      public void deposer(int montant) {  
-        solde += montant;   
+    public CompteBancaire(String nom, String description, int solde) {
+        this.nom = nom;
+        this.description = description;
+        this.solde = solde;
+    }
+    
+
+    public void deposer(int montant) {
+        solde += montant;
         addOperations("Crédit " + montant, montant);
-      }  
+    }
 
-      public void retirer(int montant) {  
+    public void retirer(int montant) {
         if (solde < montant) {
             throw new EJBException();
         } else {
@@ -125,7 +134,7 @@ abstract public class CompteBancaire implements Serializable {
             addOperations("Débit " + montant, montant);
         }
     }
-      
+
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -147,11 +156,9 @@ abstract public class CompteBancaire implements Serializable {
         this.listeOprerations = listeOprerations;
     }
 
-
     @Override
     public String toString() {
         return "tp2.CompteBancaire[ id=" + id + " ]";
     }
-    
-    
+
 }

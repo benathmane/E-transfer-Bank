@@ -60,12 +60,12 @@ public class GestionnaireDeCompteBancaire {
         creerCompte(new CompteBancaire("SAIDI Marouane", 185900));
         creerCompte(new CompteBancaire("SIMO DJILO Zacharie", 100852));*/
         for (int i=0; i < 200; i++){
-            String nom = "Proprio" + i;
+            String nom = "CR Proprio" + i;
             int solde = (int) Math.round(Math.random() * 100000);
             creerCompte(new CompteCourant(nom, solde));
         }
         for (int i=0; i < 200; i++){
-            String nom = "Proprio" + i;
+            String nom = "CE Proprio" + i;
             int solde = (int) Math.round(Math.random() * 100000);
             double taux = 1 + 5 * Math.random();
             creerCompte(new CompteEpargne(nom, solde, taux));
