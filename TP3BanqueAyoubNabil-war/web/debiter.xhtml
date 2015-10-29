@@ -21,7 +21,7 @@
                         <h:outputLabel value="Compte à déditer : "></h:outputLabel>
                         <p:selectOneMenu value="#{compteBancaireMBean.idCompteADebiter}">
                             <c:forEach var="CompteBancaire" items="#{compteBancaireMBean.getComptesBancaires()}">
-                                <f:selectItem itemLabel="${CompteBancaire.id}" itemValue="${CompteBancaire.id}" />
+                                <f:selectItem itemLabel="${CompteBancaire.nom}" itemValue="${CompteBancaire.id}" />
                             </c:forEach>
                         </p:selectOneMenu><br/>
                         <h:outputLabel value="Montant : "></h:outputLabel>

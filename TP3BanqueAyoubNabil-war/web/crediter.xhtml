@@ -20,7 +20,7 @@
 
                         <p:selectOneMenu value="#{compteBancaireMBean.idCompteACrediter}">
                             <c:forEach var="CompteBancaire" items="#{compteBancaireMBean.getComptesBancaires()}">
-                                <f:selectItem itemLabel="${CompteBancaire.id}" itemValue="${CompteBancaire.id}" />
+                                <f:selectItem itemLabel="${CompteBancaire.nom}" itemValue="${CompteBancaire.id}" />
                             </c:forEach>
                         </p:selectOneMenu><br/>
 
