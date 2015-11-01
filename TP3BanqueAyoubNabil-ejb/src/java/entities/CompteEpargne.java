@@ -20,8 +20,7 @@ public class CompteEpargne extends CompteBancaire implements Serializable {
     public CompteEpargne(){}
     
     public CompteEpargne(String nom, int  solde, double  taux){
-        super(nom, solde);
-        this.description = "Epargne";
+        super(nom, solde, "Epargne");
         this.tauxEpargne = taux;
     }
     
@@ -33,7 +32,7 @@ public class CompteEpargne extends CompteBancaire implements Serializable {
         this.tauxEpargne = tauxEpargne;
     }
     
-    public  void appliquerTaux(){
+    public void appliquerTaux(){
         solde = (int) (solde * (1 + tauxEpargne));
     }
     

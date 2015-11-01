@@ -20,8 +20,7 @@ public class CompteCourant extends CompteBancaire implements Serializable {
     public  CompteCourant(){};
     
     public CompteCourant(String nom, int solde){
-        super(nom, solde);
-        this.description = "Courant";
+        super(nom, solde, "Courant");
     }
 
     @Override

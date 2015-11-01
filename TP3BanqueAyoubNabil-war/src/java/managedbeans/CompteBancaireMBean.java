@@ -332,5 +332,4 @@ public class CompteBancaireMBean implements Serializable {
             refreshListeDesComptes();
         }
     }
-
 }

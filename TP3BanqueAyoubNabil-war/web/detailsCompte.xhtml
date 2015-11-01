@@ -20,11 +20,16 @@
                     <h2>Historique d'un compte</h2>
                 </center>
                 <f:view>
-
-
-                    <h:form>
-                        <p:dataTable value="#{operationsBancairesMBean.operationsBancaires}" var="item">
-                            <p:column>
+                    <h:form  id="FormOperationseOk" rendered="#{loginMBean.connected}">
+                        <p:dataTable value="#{operationsBancairesMBean.operationsBancaires}" var="item"
+                                     id="dataTableID"
+                                     emptyMessage="No Bank account found with given criteria"   
+                                     widgetVar="BankAccountTable"  
+                                     paginator="true"  
+                                     rows="5"
+                                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     rowsPerPageTemplate="5,10,15">
+                            <p:column sortBy="#{item.dateoperation}">
                                 <f:facet name="header">
                                     <h:outputText value="Date de l'operation"/>
                                 </f:facet>
@@ -36,16 +41,27 @@
                                 </f:facet>
                                 <h:outputText value="#{item.description}"/>
                             </p:column>
-                            <p:column>
+                            <p:column
+                                sortBy="#{item.montant}"
+                                filterBy="#{item.montant}">
                                 <f:facet name="header">
                                     <h:outputText value="Montant"/>
                                 </f:facet>
-                                <h:outputText value="#{item.montant}"/>
+                                <h:outputText value="#{item.montant}">
+                                    <f:convertNumber currencySymbol="€" groupingUsed="#{true}" maxFractionDigits="2" type="currency"/>
+                                </h:outputText>
                             </p:column>
                         </p:dataTable>
                     </h:form>
                 </f:view>
+                <h:form id="FormKoOperations" rendered="#{!loginMBean.connected}" style="text-align: right"> 
+                    Merci de 
+                    <p:commandLink 
+                        value="Se connecter"
+                        action="Login.xhtml?faces-redirect=true">
 
+                    </p:commandLink>
+                </h:form>
             </ui:define>
 
         </ui:composition>

@@ -114,7 +114,7 @@ abstract public class CompteBancaire implements Serializable {
         addOperations("Création du compte", solde);
     }
 
-    public CompteBancaire(String nom, String description, int solde) {
+    public CompteBancaire(String nom, int solde, String description) {
         this.nom = nom;
         this.description = description;
         this.solde = solde;

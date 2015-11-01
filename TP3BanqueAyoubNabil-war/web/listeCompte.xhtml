@@ -49,7 +49,8 @@
                             </p:column>
                             <p:column
                                 sortBy="#{item.nom}"
-                                filterBy="#{item.nom}">
+                                filterBy="#{item.nom}"
+                                filterMatchMode="contains">
                                 <f:facet name="header">
                                     <h:outputText value="Nom"/>
                                 </f:facet>
@@ -69,6 +70,7 @@
                                 </f:facet>
                                 <div style="background-color: green">
                                     <h:outputText value="#{item.solde}" 
+                                                  id="updateID1"
                                                   style="font-weight: Bold; color: white" 
                                                   rendered="#{item.solde gt 0}">
                                         <f:convertNumber currencySymbol="€" groupingUsed="#{true}" maxFractionDigits="2" type="currency"/>
@@ -76,6 +78,7 @@
                                 </div>
                                 <div style="background-color: red">
                                     <h:outputText value="#{item.solde}" 
+                                                  id="updateID2"
                                                   style="font-weight: Bold; color: white" 
                                                   rendered="#{item.solde le 0}"> 
                                         <f:convertNumber currencySymbol="€" groupingUsed="#{true}" maxFractionDigits="2" type="currency"/>

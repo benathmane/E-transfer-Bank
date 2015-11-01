@@ -64,13 +64,23 @@ public class GestionnaireDeCompteBancaire {
         for (int i = 0; i < 200; i++) {
             String nom = "CR Proprio" + i;
             int solde = (int) Math.round(Math.random() * 100000);
-            creerCompte(new CompteCourant(nom, solde));
+            CompteCourant cc = new CompteCourant(nom, solde);
+            creerCompte(cc);
+            for (int j = 0; j < 50; j++) {
+                this.crediterCompte(cc.getId(), (int) Math.round(Math.random() * i * 50));
+                this.debiterCompte(cc.getId(), (int) Math.round(Math.random() * i));
+            }
         }
         for (int i = 0; i < 200; i++) {
             String nom = "CE Proprio" + i;
             int solde = (int) Math.round(Math.random() * 100000);
             double taux = 1 + 5 * Math.random();
-            creerCompte(new CompteEpargne(nom, solde, taux));
+            CompteEpargne ce = new CompteEpargne(nom, solde, taux);
+            creerCompte(ce);
+            for (int j = 0; j < 50; j++) {
+                this.crediterCompte(ce.getId(), (int) Math.round(Math.random() * i * 50));
+                this.debiterCompte(ce.getId(), (int) Math.round(Math.random() * i));
+            }
         }
     }
 
@@ -181,34 +191,52 @@ public class GestionnaireDeCompteBancaire {
         q.setMaxResults(nb);
         return q.getResultList();
     }
-    
-    public List<CompteBancaireBis> getComptesFiltreparNom(Map<String,Object> filters, int first, int pageSize){
-        List<CompteBancaireBis> res = null;
-        System.out.println("filtres"+filters);
-        for(Entry<String, Object> entry : filters.entrySet()) {
+
+    public List<CompteBancaire> getComptesFiltreparNom(Map<String, Object> filters, int start, int pageSize) {
+        List<CompteBancaire> res = null;
+        System.out.println("filtres" + filters);
+        for (Entry<String, Object> entry : filters.entrySet()) {
             String key = entry.getKey();
             Object value = entry.getValue().toString();
-            String r ="";
+            String r = "";
             String c = "";
-            if(key.equals("nom")){
-               r = "SELECT c FROM CompteBancaire c WHERE c.nom LIKE '%"+value+"%'";
-               c = "SELECT COUNT(c) FROM CompteBancaire c WHERE c.nom LIKE '%"+value+"%'";
+            if (key.equals("nom")) {
+                r = "SELECT c FROM CompteBancaire c WHERE c.nom LIKE '%" + value + "%'";
+                c = "SELECT COUNT(c) FROM CompteBancaire c WHERE c.nom LIKE '%" + value + "%'";
             }
             /*if(key.equals("id")){
-               r = "SELECT c FROM CompteBancaire c WHERE c.id = "+value;
+             r = "SELECT c FROM CompteBancaire c WHERE c.id = "+value;
+             }*/
+            if (key.equals("solde")) {
+                r = "SELECT c FROM CompteBancaire c WHERE c.solde = " + value;
+                c = "SELECT COUNT(c) FROM CompteBancaire c WHERE c.solde = " + value;
             }
-            if(key.equals("solde")){
-               r = "SELECT c FROM CompteBancaire c WHERE c.solde = "+value;
-            }*/
             Query q = this.em.createQuery(r);
             Query count = this.em.createQuery(c);
-            System.out.println("count : " + count.getFirstResult());
-            q.setFirstResult(first);
-            q.setMaxResults(pageSize);
+            System.out.println("count : " + count.getSingleResult().toString());
+            int i = Integer.parseInt(count.getSingleResult().toString());
+            System.out.println("i : " + i);
+            q.setFirstResult(start);
+            q.setMaxResults(i);
             return q.getResultList();
         }
-         
-      
         return res;
+    }
+
+    public void creerCompte(CompteEpargne c) {
+        em.persist(c);
+    }
+
+    public List<CompteEpargne> findAllCE() {
+        Query q = em.createQuery("select c from CompteEpargne c");
+        return q.getResultList();
+    }
+
+    public void appliquertauxwithtimer() {
+        List<CompteEpargne> listece = this.findAllCE();
+        for (CompteEpargne c : listece) {
+            c.appliquerTaux();
+            em.persist(c);
+        }
     }
 }
