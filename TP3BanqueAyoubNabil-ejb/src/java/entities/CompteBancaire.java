@@ -11,12 +11,14 @@ import java.util.List;
 import javax.ejb.EJBException;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -157,6 +159,10 @@ abstract public class CompteBancaire implements Serializable {
     @Override
     public String toString() {
         return "tp2.CompteBancaire[ id=" + id + " ]";
+    }
+
+    public List<OperationBancaire> getListeOperations() {
+        return listeOprerations;
     }
 
 }
