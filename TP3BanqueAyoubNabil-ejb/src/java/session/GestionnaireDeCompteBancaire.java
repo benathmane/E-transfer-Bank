@@ -15,6 +15,8 @@ import entities.CompteBancaire;
 import entities.CompteCourant;
 import entities.CompteEpargne;
 import entities.OperationBancaire;
+import java.util.Map;
+import java.util.Map.Entry;
 
 /**
  *
@@ -178,5 +180,35 @@ public class GestionnaireDeCompteBancaire {
         q.setFirstResult(start);
         q.setMaxResults(nb);
         return q.getResultList();
+    }
+    
+    public List<CompteBancaireBis> getComptesFiltreparNom(Map<String,Object> filters, int first, int pageSize){
+        List<CompteBancaireBis> res = null;
+        System.out.println("filtres"+filters);
+        for(Entry<String, Object> entry : filters.entrySet()) {
+            String key = entry.getKey();
+            Object value = entry.getValue().toString();
+            String r ="";
+            String c = "";
+            if(key.equals("nom")){
+               r = "SELECT c FROM CompteBancaire c WHERE c.nom LIKE '%"+value+"%'";
+               c = "SELECT COUNT(c) FROM CompteBancaire c WHERE c.nom LIKE '%"+value+"%'";
+            }
+            /*if(key.equals("id")){
+               r = "SELECT c FROM CompteBancaire c WHERE c.id = "+value;
+            }
+            if(key.equals("solde")){
+               r = "SELECT c FROM CompteBancaire c WHERE c.solde = "+value;
+            }*/
+            Query q = this.em.createQuery(r);
+            Query count = this.em.createQuery(c);
+            System.out.println("count : " + count.getFirstResult());
+            q.setFirstResult(first);
+            q.setMaxResults(pageSize);
+            return q.getResultList();
+        }
+         
+      
+        return res;
     }
 }

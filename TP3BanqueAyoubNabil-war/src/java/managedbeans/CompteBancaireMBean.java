@@ -64,7 +64,11 @@ public class CompteBancaireMBean implements Serializable {
                     String nomChamp, SortOrder so,
                     Map map) {
                 // A ecrire
-                System.out.println("### load : start =" + start + " nb = " + nb + "nom colonne = " + nomChamp);
+                System.out.println(map);
+                if (!map.isEmpty()){
+                    System.out.println("map : " +map);
+                    return gc.getComptesFiltreparNom(map, start, nb);
+                }
                 if (nomChamp != null) {
                     if (nomChamp.equals("nom")) {
                         // Il faut trier
@@ -327,7 +331,6 @@ public class CompteBancaireMBean implements Serializable {
             addMessage("Information.", "Suppression effectuée.");
             refreshListeDesComptes();
         }
-        
     }
 
 }
