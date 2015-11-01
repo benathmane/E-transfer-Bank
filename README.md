@@ -27,11 +27,9 @@ Vous devez rendre le TP4 complet avec les ajouts suivants :
 - Obligation d'utiliser au moins 5 composants PrimeFaces non vus en cours. <B>DONE</B>
 
 Ce qui reste à faire :
-- Interface joli <b>DONE</b><br/>
-- Lazy Loading dans détail <br/>
 - Filtre dans les tableaux <br/>
-- Pour créditer/débiter/transfert, mettre le nom aulieu de l'ID <b>DONE</b><br/>
-- Suppression : poubelle ou click droit/supprimer <b>DONE</b><br/>
+- Ajouter classe CLIENT <br/>
+- Boutton retour pour add client <br/>
 - ...
 
 Réalisé par : 

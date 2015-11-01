@@ -13,38 +13,39 @@
         <ui:composition template="./templates/template_default.xhtml">
             <ui:define name="content">
                 <h:form id="FormCrediter" rendered="#{loginMBean.connected}"> 
-                    <p:growl id="msg" showDetail="true" />
-                    <center>
-                        <h2>Créditer un compte</h2>
-                    </center>
-                    <h:panelGrid columns="3">
-                        <h:outputLabel value="Compte à créditer : "></h:outputLabel>
+                    <p:panel>  
+                        <p:growl id="msg" showDetail="true" />
+                        <center>
+                            <h2>Créditer un compte</h2>
+                        </center>
+                        <h:panelGrid columns="3">
+                            <h:outputLabel value="Compte à créditer : "></h:outputLabel>
 
-                        <p:selectOneMenu value="#{compteBancaireMBean.idCompteACrediter}">
-                            <c:forEach var="CompteBancaire" items="#{compteBancaireMBean.getComptesBancaires()}">
-                                <f:selectItem itemLabel="${CompteBancaire.nom}" itemValue="${CompteBancaire.id}" />
-                            </c:forEach>
-                        </p:selectOneMenu><br/>
+                            <p:selectOneMenu value="#{compteBancaireMBean.idCompteACrediter}">
+                                <c:forEach var="CompteBancaire" items="#{compteBancaireMBean.getComptesBancaires()}">
+                                    <f:selectItem itemLabel="${CompteBancaire.nom}" itemValue="${CompteBancaire.id}" />
+                                </c:forEach>
+                            </p:selectOneMenu><br/>
 
-                        <h:outputLabel value="Montant : "></h:outputLabel>
-                        <p:spinner id="prefix" value="#{compteBancaireMBean.montantACrediter}" min="0" >
-                            <p:ajax update="ajaxSpinnerValue" process="@this" />
-                        </p:spinner>
-                        <h:outputText id="ajaxSpinnerValue" value="#{compteBancaireMBean.montantACrediter} €" style="padding-left: 10px" />
-                        <br/>
-                        <p:commandButton 
-                            value="Créditer le compte"
-                            action="#{compteBancaireMBean.crediterUnCompte()}" 
-                            update="msg"
-                            icon="ui-icon-plus">
-                            <p:confirm header="Confirmation" message="Êtes-vous sûr ?" icon="ui-icon-alert" />
-                        </p:commandButton>
-                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                            <p:commandButton value="Oui" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-                            <p:commandButton value="Non" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                        </p:confirmDialog>
-                    </h:panelGrid>
-
+                            <h:outputLabel value="Montant : "></h:outputLabel>
+                            <p:spinner id="prefix" value="#{compteBancaireMBean.montantACrediter}" min="0" >
+                                <p:ajax update="ajaxSpinnerValue" process="@this" />
+                            </p:spinner>
+                            <h:outputText id="ajaxSpinnerValue" value="#{compteBancaireMBean.montantACrediter} €" style="padding-left: 10px" />
+                            <br/>
+                            <p:commandButton 
+                                value="Créditer le compte"
+                                action="#{compteBancaireMBean.crediterUnCompte()}" 
+                                update="msg"
+                                icon="ui-icon-plus">
+                                <p:confirm header="Confirmation" message="Êtes-vous sûr ?" icon="ui-icon-alert" />
+                            </p:commandButton>
+                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                <p:commandButton value="Oui" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                <p:commandButton value="Non" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                            </p:confirmDialog>
+                        </h:panelGrid>
+                    </p:panel>  
                 </h:form>
 
                 <h:form id="FormKoCrediter" rendered="#{!loginMBean.connected}" style="text-align: right"> 
@@ -52,7 +53,7 @@
                     <p:commandLink 
                         value="Se connecter"
                         action="Login.xhtml?faces-redirect=true">
-                   
+
                     </p:commandLink>
                 </h:form>
             </ui:define>

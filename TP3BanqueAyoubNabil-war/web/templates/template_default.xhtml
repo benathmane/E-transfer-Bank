@@ -48,13 +48,18 @@
                             <p:growl id="messages" showDetail="true"/>
 
                             <p:slideMenu  style="width: 190px">
-                                <p:menuitem value="Accueil" outcome="Login.xhtml"/><p:separator />
+                                <p:menuitem value="Accueil" outcome="Profil.xhtml"/>
+                                <p:separator />
+                                <p:menuitem value="Afficher les comptes" outcome="listeCompte.xhtml"/>
+                                <p:separator />
                                 <p:submenu label="Gestion des comptes">
                                     <p:menuitem value="Effectuer un dépot" outcome="crediter.xhtml"/>
                                     <p:menuitem value="Effectuer un retrait" outcome="debiter.xhtml"/>
                                     <p:menuitem value="Effectuer un transfert" outcome="transfert.xhtml"/>
                                 </p:submenu>
-                                <p:menuitem value="Afficher les comptes" outcome="listeCompte.xhtml"/>
+                                <p:submenu label="Gestion des clients">
+                                    <p:menuitem value="Ajouter un client" outcome="ajoutClt.xhtml"/>
+                                </p:submenu>
                             </p:slideMenu>
                         </h:form>
 
@@ -65,19 +70,23 @@
                             <p:slideMenu  style="width: 190px">
                                 <p:menuitem value="Accueil" outcome="Profil.xhtml"/>
                                 <p:separator />
+                                <p:menuitem value="Afficher les comptes" outcome="listeCompte.xhtml"/>
+                                <p:separator />
                                 <p:submenu label="Gestion des comptes">
                                     <p:menuitem value="Effectuer un dépot" outcome="crediter.xhtml"/>
                                     <p:menuitem value="Effectuer un retrait" outcome="debiter.xhtml"/>
                                     <p:menuitem value="Effectuer un transfert" outcome="transfert.xhtml"/>
                                 </p:submenu>
-                                <p:menuitem value="Afficher les comptes" outcome="listeCompte.xhtml"/>
+                                <p:submenu label="Gestion des clients">
+                                    <p:menuitem value="Ajouter un client" outcome="ajoutClt.xhtml"/>
+                                </p:submenu>
                             </p:slideMenu>
                         </h:form>
 
 
                     </div>
                 </ui:insert>
-            </div>
+            </div><br/>
             <div id="content" class="left_content">
                 <ui:insert name="content"></ui:insert>
             </div>
