@@ -15,6 +15,7 @@ import entities.CompteBancaire;
 import entities.CompteCourant;
 import entities.CompteEpargne;
 import entities.OperationBancaire;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -193,7 +194,7 @@ public class GestionnaireDeCompteBancaire {
     }
 
     public List<CompteBancaire> getComptesFiltreparNom(Map<String, Object> filters, int start, int pageSize) {
-        List<CompteBancaire> res = null;
+        List<CompteBancaire> res = new ArrayList<CompteBancaire>();
         System.out.println("filtres" + filters);
         for (Entry<String, Object> entry : filters.entrySet()) {
             String key = entry.getKey();

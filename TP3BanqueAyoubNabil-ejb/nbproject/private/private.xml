@@ -5,8 +5,10 @@
         <group>
             <file>file:/C:/Users/BENATHMANE/Documents/NetBeansProjects/TP3BanqueAyoubNabil/TP3BanqueAyoubNabil-ejb/src/java/session/GestionnaireDeCompteBancaire.java</file>
             <file>file:/C:/Users/BENATHMANE/Documents/NetBeansProjects/TP3BanqueAyoubNabil/TP3BanqueAyoubNabil-ejb/src/java/entities/CompteBancaire.java</file>
-            <file>file:/C:/Users/BENATHMANE/Documents/NetBeansProjects/TP3BanqueAyoubNabil/TP3BanqueAyoubNabil-ejb/src/java/session/GestionnaireDeUtilisateurs.java</file>
-            <file>file:/C:/Users/BENATHMANE/Documents/NetBeansProjects/TP3BanqueAyoubNabil/TP3BanqueAyoubNabil-ejb/src/java/session/InitBD.java</file>
+            <file>file:/C:/Users/BENATHMANE/Documents/NetBeansProjects/TP3BanqueAyoubNabil/TP3BanqueAyoubNabil-ejb/src/java/entities/CompteCourant.java</file>
+            <file>file:/C:/Users/BENATHMANE/Documents/NetBeansProjects/TP3BanqueAyoubNabil/TP3BanqueAyoubNabil-ejb/src/java/session/GestionnaireTimer.java</file>
+            <file>file:/C:/Users/BENATHMANE/Documents/NetBeansProjects/TP3BanqueAyoubNabil/TP3BanqueAyoubNabil-ejb/src/java/entities/CompteEpargne.java</file>
+            <file>file:/C:/Users/BENATHMANE/Documents/NetBeansProjects/TP3BanqueAyoubNabil/TP3BanqueAyoubNabil-ejb/setup/sun-resources.xml</file>
         </group>
     </open-files>
 </project-private>
